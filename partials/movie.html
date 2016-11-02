@@ -17,6 +17,7 @@
     </div>
     <div class="ten wide column">
       <h1>{{view.movie.Title}}</h1>
+      <h3>Released: {{view.movie.Released | date : fullDate}}</h3>
       <p>{{view.movie.Plot}}</p>
       <p>Rated: {{view.movie.Rated}} | IMDB Rating: {{view.movie.imdbRating}} | IMDB Votes: {{view.movie.imdbVotes}}</p>
       <p>Actors: {{view.movie.Actors}}</p>
