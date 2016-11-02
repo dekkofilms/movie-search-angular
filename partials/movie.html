@@ -1,0 +1,15 @@
+<div>
+  <h1>{{view.movie.Title}}</h1>
+  <div ng-hide="view.movie.Poster === 'N/A'">
+    <img ng-src="{{view.movie.Poster}}">
+  </div>
+  <div ng-show="view.movie.Poster === 'N/A'">
+    NO PIC
+  </div>
+  <p>Genre: {{view.movie.Genre}}</p>
+  <p>Rated: {{view.movie.Rated}}</p>
+  <p>IMDB Rating: {{view.movie.imdbRating}}</p>
+  <p>IMDB Votes: {{view.movie.imdbVotes}}</p>
+  <p>Actors: {{view.movie.Actors}}</p>
+  <p>Plot: {{view.movie.Plot}}</p>
+</div>
