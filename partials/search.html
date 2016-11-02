@@ -1,16 +1,30 @@
-
-<h1>Search Your Movie</h1>
-
-<form>
-  <input type="text" ng-model="search">
-  <button ng-click="runSearch(search)">Search</button>
-</form>
-
-<div class="container">
-
-  <div ng-repeat="movie in view.movies | orderBy : 'Year'">
-    <a ng-href="#/{{movie.imdbID}}"><h2>{{movie.Title}}</h2></a>
-    <p>{{movie.Year}}</p>
+<div class="ui four column center aligned stackable grid" >
+  <div class="row">
+    <div class="four wide column">
+      <h1>Search Your Movie</h1>
+    </div>
   </div>
 
+  <div class="row">
+    <div class="four wide column">
+      <form>
+        <input type="text" ng-model="search">
+        <button ng-click="runSearch(search)">Search</button>
+      </form>
+    </div>
+  </div>
+  <div class="row"></div>
+</div>
+
+<div class="ui two column center aligned grid internally celled stackable" >
+  <div class="two column row">
+
+    <div class="column" ng-repeat="movie in movies | orderBy : 'Year'">
+      <a ng-href="#/{{movie.imdbID}}">
+        <h2>{{movie.Title}}</h2>
+        <p>{{movie.Year}}</p>
+      </a>
+    </div>
+
+  </div>
 </div>

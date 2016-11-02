@@ -1,6 +1,4 @@
-app.controller('movieSearch', ['$scope', '$http', function ($scope, $http) {
-  $scope.view = {};
-
+app.controller('movieSearch', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
   $scope.runSearch = function (input) {
     console.log(input);
     $http({
@@ -8,14 +6,14 @@ app.controller('movieSearch', ['$scope', '$http', function ($scope, $http) {
       url: 'http://www.omdbapi.com/?s=' + input
     }).then(function successCallback(response) {
         console.log(response.data.Search);
-        $scope.view.movies = response.data.Search;
+        $rootScope.movies = response.data.Search;
       }, function errorCallback(response) {
-        $scope.view.movies = 'You Failed At Life';
+        $rootScope.movies = 'You Failed At Life';
       });
   }
 }]);
 
-app.controller('movie', ['$scope', '$http', '$routeParams',  function ($scope, $http, $routeParams) {
+app.controller('movie', ['$scope', '$http', '$routeParams', '$location', '$rootScope',  function ($scope, $http, $routeParams, $location, $rootScope) {
   console.log($routeParams.movieID);
   let movieID = $routeParams.movieID
   $scope.view = {};
@@ -29,5 +27,19 @@ app.controller('movie', ['$scope', '$http', '$routeParams',  function ($scope, $
     }, function errorCallback(response) {
       $scope.view.movie = 'You Failed At Life';
     });
+
+  $scope.runSearch = function (input) {
+    console.log(input);
+    $http({
+      method: 'GET',
+      url: 'http://www.omdbapi.com/?s=' + input
+    }).then(function successCallback(response) {
+        console.log(response.data.Search);
+        $location.path('/');
+        $rootScope.movies = response.data.Search;
+      }, function errorCallback(response) {
+        $rootScope.movies = 'You Failed At Life';
+      });
+  }
 
 }]);
