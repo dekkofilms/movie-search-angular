@@ -20,14 +20,14 @@ describe('movie search app', function() {
     element(by.model('search')).sendKeys('Snakes on a Plane')
     element(by.tagName('button')).click();
 
-    expect(element.all(by.repeater('movie in view.movies')).count()).toBe(5);
+    expect(element.all(by.repeater('movie in movies')).count()).toBe(5);
   });
 
   it('should go to individual movie page', function () {
     element(by.model('search')).sendKeys('Snakes on a Plane')
     element(by.tagName('button')).click();
 
-    element.all(by.repeater('movie in view.movies')).get(0).click();
+    element.all(by.repeater('movie in movies')).get(0).click();
 
     expect(browser.getCurrentUrl()).toEqual('http://localhost:8000/#/tt0417148');
   });
@@ -36,7 +36,7 @@ describe('movie search app', function() {
     element(by.model('search')).sendKeys('Snakes on a Plane')
     element(by.tagName('button')).click();
 
-    element.all(by.repeater('movie in view.movies')).get(0).click();
+    element.all(by.repeater('movie in movies')).get(0).click();
     var content = element(by.css('[ng-view]')).getText();
 
     expect(content).toContain('Snakes on a Plane');

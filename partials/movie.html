@@ -9,8 +9,11 @@
 
 <div class="ui internally celled centered grid">
   <div class="row">
-    <div class="three wide column">
-      <img class="ui small rounded image" ng-src="{{view.movie.Poster}}">
+    <div class="three wide column" ng-hide="view.movie.Poster === 'N/A'">
+      <img class="ui medium rounded image" ng-src="{{view.movie.Poster}}">
+    </div>
+    <div class="three wide column" ng-show="view.movie.Poster === 'N/A'">
+      <img class="ui medium rounded image" src="http://epaper.jagran.com/images/no_image_thumb.gif">
     </div>
     <div class="ten wide column">
       <h1>{{view.movie.Title}}</h1>
